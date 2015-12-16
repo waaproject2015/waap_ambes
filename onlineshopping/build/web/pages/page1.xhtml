@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/templates/template.xhtml">
+    <ui:define name="metadata">
+    </ui:define>
+    <ui:define name="content">
+        <p:dataGrid var="clothe" value="#{clothesBean.clothList}" columns="6" rows="3">
+            <p:column>               
+                <p:commandLink action="post"> <p:graphicImage value="#{name[0]}" />
+                </p:commandLink>
+                <h:panelGrid columns="1">
+                    <p:graphicImage value="../resources/images/#{clothe.imgName}"/>
+                    <h:outputText value="#{clothe.size}" />
+                    <h:outputText value="#{clothe.color}"/>
+                    <p:commandLink  title="View Detail">
+                        <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                        <f:setPropertyActionListener value="#{clothe}" target="#{clothesBean.selected}" />
+                    </p:commandLink>
+                    <p:commandLink value="For Test postPage" action="post"/>
+                    <p:commandLink value="For Test register" action="register"/>
+                </h:panelGrid>
+            </p:column>
+        </p:dataGrid>
+
+        <!--        <p:dataTable var="name" value="# {clothesBean.clothList}">
+                    <p:column>
+        
+                        <p:commandLink action="index"> <p:graphicImage value="# {name[0]}" />
+                        </p:commandLink>
+        
+        
+                    </p:column>
+                    <p:column>
+        
+                        <p:graphicImage value="# {name[1]}" />
+                    </p:column>
+                </p:dataTable>-->
+
+    </ui:define>
+</ui:composition>
